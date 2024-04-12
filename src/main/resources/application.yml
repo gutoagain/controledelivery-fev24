@@ -1,0 +1,14 @@
+server:
+  servlet:
+    context-path: /controledelivery/api
+
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      uri: ${MONGO_DB_URI:mongodb+srv://marcioaugustoos:rqXC6c6G1H4fh9el@sistemagestao.chogs8u.mongodb.net/controleDelivery?retryWrites=true&w=majority}
+      auto-index-creation: true
+
+springdoc:
+  swagger-ui:
+    path: /public/swagger
