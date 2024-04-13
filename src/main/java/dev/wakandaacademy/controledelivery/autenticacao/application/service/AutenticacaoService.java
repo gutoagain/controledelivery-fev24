@@ -5,4 +5,5 @@ import dev.wakandaacademy.controledelivery.autenticacao.domain.Token;
 
 public interface AutenticacaoService {
     Token autentica(UsernamePasswordAuthenticationToken userCredentials);
+    Token reativaToken(String tokenExpirado);
 }

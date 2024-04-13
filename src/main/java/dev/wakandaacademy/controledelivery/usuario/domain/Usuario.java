@@ -1,7 +1,7 @@
 package dev.wakandaacademy.controledelivery.usuario.domain;
 
 import dev.wakandaacademy.controledelivery.usuario.application.api.UsuarioNovoRequest;
-import jakarta.validation.constraints.Email;
+import javax.validation.constraints.Email;
 import lombok.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.annotation.Id;
