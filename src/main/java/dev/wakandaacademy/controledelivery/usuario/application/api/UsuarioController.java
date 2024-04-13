@@ -1,7 +1,7 @@
 package dev.wakandaacademy.controledelivery.usuario.application.api;
 
 import dev.wakandaacademy.controledelivery.usuario.application.service.UsuarioService;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.validation.annotation.Validated;
