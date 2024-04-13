@@ -2,6 +2,7 @@ package dev.wakandaacademy.controledelivery.autenticacao.application.api;
 
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -18,4 +19,8 @@ public class AutenticacaoRequest {
     @Size(min = 6, message = "A senha deve ter no mínimo 6 caracteres")
     @NotNull
     private String senha;
+
+    public UsernamePasswordAuthenticationToken getUserPassToken() {
+        return new UsernamePasswordAuthenticationToken(usuario, senha);
+    }
 }
