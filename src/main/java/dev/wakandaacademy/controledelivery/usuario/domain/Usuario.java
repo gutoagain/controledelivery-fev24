@@ -1,5 +1,6 @@
 package dev.wakandaacademy.controledelivery.usuario.domain;
 
+import dev.wakandaacademy.controledelivery.usuario.application.api.UsuarioNovoRequest;
 import jakarta.validation.constraints.Email;
 import lombok.*;
 import lombok.extern.log4j.Log4j2;
@@ -22,4 +23,9 @@ public class Usuario {
     @Email
     @Indexed(unique = true)
     private String email;
+
+    public Usuario(UsuarioNovoRequest usuarioNovo) {
+        this.idUsuario = UUID.randomUUID();
+        this.email = usuarioNovo.getEmail();
+    }
 }
