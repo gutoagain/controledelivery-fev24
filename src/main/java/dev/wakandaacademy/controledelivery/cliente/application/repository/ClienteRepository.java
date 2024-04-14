@@ -8,4 +8,5 @@ import java.util.UUID;
 public interface ClienteRepository {
     Cliente salva(Cliente cliente);
     Optional<Cliente> buscaClientePorId(UUID idCliente);
+    void deletaClientePorId(Cliente clienteDeletado);
 }
