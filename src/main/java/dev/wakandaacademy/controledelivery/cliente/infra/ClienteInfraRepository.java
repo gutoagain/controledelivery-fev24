@@ -1,5 +1,6 @@
-package dev.wakandaacademy.controledelivery.cliente.application.repository;
+package dev.wakandaacademy.controledelivery.cliente.infra;
 
+import dev.wakandaacademy.controledelivery.cliente.application.repository.ClienteRepository;
 import dev.wakandaacademy.controledelivery.cliente.domain.Cliente;
 import dev.wakandaacademy.controledelivery.cliente.infra.ClienteMongoDBRepository;
 import dev.wakandaacademy.controledelivery.handler.APIException;

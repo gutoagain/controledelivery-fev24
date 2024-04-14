@@ -8,6 +8,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 @Log4j2
 @RequiredArgsConstructor
@@ -22,6 +24,13 @@ public class ClienteRestController implements ClienteAPI {
         ClienteIdResponse clienteCriado = clienteService.criaNovoCliente(usuario, clienteRequest);
         log.info("[finaliza] ClienteRestController - postNovoCliente");
         return clienteCriado;
+    }
+
+    @Override
+    public ClienteDetalhadoResponse consultaCliente(String token, UUID idCliente) {
+        log.info("[inicia] ClienteRestController - consultaCliente");
+        log.info("[finaliza] ClienteRestController - consultaCliente");
+        return null;
     }
 
     private String getUsuarioByToken(String token) {
