@@ -9,11 +9,13 @@ import java.util.UUID;
 public class ClienteDetalhadoResponse {
     private UUID idCliente;
     private String nomeCliente;
+    private String email;
     private UUID idUsuario;
 
     public ClienteDetalhadoResponse(Cliente cliente) {
         this.idCliente = cliente.getIdCliente();
         this.nomeCliente = cliente.getNomeCliente();
+        this.email = cliente.getEmail();
         this.idUsuario = cliente.getIdUsuario();
     }
 }

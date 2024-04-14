@@ -32,4 +32,13 @@ public class UsuarioRepositoryMongoDB implements UsuarioRepository {
         log.info("[finaliza] UsuarioRepositoryMongoDB - buscaUsuarioPorId");
         return usuario;
     }
+
+    @Override
+    public Usuario buscaUsuarioPorEmail(String emailUsuario) {
+        log.info("[inicia] UsuarioRepositoryMongoDB - buscaUsuarioPorEmail");
+        Usuario usuario = usuarioMongoRepository.findByEmail(emailUsuario)
+                .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST, "Usuario não encontrado!"));
+        log.info("[finaliza] UsuarioRepositoryMongoDB - buscaUsuarioPorEmail");
+        return usuario;
+    }
 }

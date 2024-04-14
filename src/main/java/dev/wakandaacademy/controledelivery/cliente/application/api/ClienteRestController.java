@@ -1,6 +1,7 @@
 package dev.wakandaacademy.controledelivery.cliente.application.api;
 
 import dev.wakandaacademy.controledelivery.cliente.application.service.ClienteService;
+import dev.wakandaacademy.controledelivery.cliente.domain.Cliente;
 import dev.wakandaacademy.controledelivery.config.security.service.TokenService;
 import dev.wakandaacademy.controledelivery.handler.APIException;
 import lombok.RequiredArgsConstructor;
@@ -29,8 +30,10 @@ public class ClienteRestController implements ClienteAPI {
     @Override
     public ClienteDetalhadoResponse consultaCliente(String token, UUID idCliente) {
         log.info("[inicia] ClienteRestController - consultaCliente");
+        String emailUsuario = getUsuarioByToken(token);
+        Cliente cliente = clienteService.consultaCliente(emailUsuario, idCliente);
         log.info("[finaliza] ClienteRestController - consultaCliente");
-        return null;
+        return new ClienteDetalhadoResponse(cliente);
     }
 
     private String getUsuarioByToken(String token) {
