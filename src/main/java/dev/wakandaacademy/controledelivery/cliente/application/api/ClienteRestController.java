@@ -36,6 +36,12 @@ public class ClienteRestController implements ClienteAPI {
         return new ClienteDetalhadoResponse(cliente);
     }
 
+    @Override
+    public void alteraCliente(String token, UUID idCliente, EditaClienteRequest clienteRequest) {
+        log.info("[inicia] ClienteRestController - alteraCliente");
+        log.info("[finaliza] ClienteRestController - alteraCliente");
+    }
+
     private String getUsuarioByToken(String token) {
         log.debug("[token] {}", token);
         String usuario = tokenService.getUsuarioByBearerToken(token)
