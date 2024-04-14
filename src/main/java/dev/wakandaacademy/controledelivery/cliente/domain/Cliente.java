@@ -1,6 +1,7 @@
 package dev.wakandaacademy.controledelivery.cliente.domain;
 
 import dev.wakandaacademy.controledelivery.cliente.application.api.ClienteRequest;
+import dev.wakandaacademy.controledelivery.cliente.application.api.EditaClienteRequest;
 import lombok.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.annotation.Id;
@@ -33,5 +34,16 @@ public class Cliente {
         this.nomeCliente = clienteRequest.getNomeCliente();
         this.email = clienteRequest.getEmail();
         this.idUsuario = clienteRequest.getIdUsuario();
+    }
+
+    public void altera(EditaClienteRequest clienteRequest) {
+        log.info("[inicia] Cliente - altera");
+        if (clienteRequest.getNomeCliente() != null) {
+            this.nomeCliente = clienteRequest.getNomeCliente();
+        }
+        if (clienteRequest.getEmail() != null) {
+            this.email = clienteRequest.getEmail();
+        }
+        log.info("[finaliza] Cliente - altera");
     }
 }

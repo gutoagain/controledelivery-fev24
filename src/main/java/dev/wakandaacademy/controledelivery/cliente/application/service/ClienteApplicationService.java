@@ -2,6 +2,7 @@ package dev.wakandaacademy.controledelivery.cliente.application.service;
 
 import dev.wakandaacademy.controledelivery.cliente.application.api.ClienteIdResponse;
 import dev.wakandaacademy.controledelivery.cliente.application.api.ClienteRequest;
+import dev.wakandaacademy.controledelivery.cliente.application.api.EditaClienteRequest;
 import dev.wakandaacademy.controledelivery.cliente.application.repository.ClienteRepository;
 import dev.wakandaacademy.controledelivery.cliente.domain.Cliente;
 import dev.wakandaacademy.controledelivery.handler.APIException;
@@ -39,5 +40,14 @@ public class ClienteApplicationService implements ClienteService {
                 .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Cliente não encontrado!"));
         log.info("[finaliza] ClienteApplicationService - consultaCliente");
         return cliente;
+    }
+
+    @Override
+    public void alteraCliente(String emailUsuario, UUID idCliente, EditaClienteRequest clienteRequest) {
+        log.info("[inicia] ClienteApplicationService - alteraCliente");
+        Cliente cliente = consultaCliente(emailUsuario, idCliente);
+        cliente.altera(clienteRequest);
+        clienteRepository.salva(cliente);
+        log.info("[finaliza] ClienteApplicationService - alteraCliente");
     }
 }
