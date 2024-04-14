@@ -39,6 +39,8 @@ public class ClienteRestController implements ClienteAPI {
     @Override
     public void alteraCliente(String token, UUID idCliente, EditaClienteRequest clienteRequest) {
         log.info("[inicia] ClienteRestController - alteraCliente");
+        String emailUsuario = getUsuarioByToken(token);
+        clienteService.alteraCliente(emailUsuario, idCliente, clienteRequest);
         log.info("[finaliza] ClienteRestController - alteraCliente");
     }
 
