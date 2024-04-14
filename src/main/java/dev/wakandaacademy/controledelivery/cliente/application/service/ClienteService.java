@@ -11,4 +11,5 @@ public interface ClienteService {
     ClienteIdResponse criaNovoCliente(String usuario, ClienteRequest clienteRequest);
     Cliente consultaCliente(String emailUsuario, UUID idCliente);
     void alteraCliente(String emailUsuario, UUID idCliente, EditaClienteRequest clienteRequest);
+    void deletaCliente(String usuario, UUID idCliente);
 }

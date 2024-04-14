@@ -24,4 +24,9 @@ public interface ClienteAPI {
     void alteraCliente(@RequestHeader(name = "Authorization", required = true) String token,
                       @PathVariable UUID idCliente,
                       @RequestBody @Valid EditaClienteRequest clienteRequest);
+
+    @DeleteMapping("/deletaCliente/{idCliente}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deletaCliente(@RequestHeader(name = "Authorization", required = true) String token,
+                      @PathVariable UUID idCliente);
 }

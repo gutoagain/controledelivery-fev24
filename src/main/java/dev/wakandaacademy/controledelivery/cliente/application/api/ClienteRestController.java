@@ -44,6 +44,14 @@ public class ClienteRestController implements ClienteAPI {
         log.info("[finaliza] ClienteRestController - alteraCliente");
     }
 
+    @Override
+    public void deletaCliente(String token, UUID idCliente) {
+        log.info("[inicia] ClienteRestController - deletaCliente");
+        String usuario = getUsuarioByToken(token);
+        clienteService.deletaCliente(usuario, idCliente);
+        log.info("[finaliza] ClienteRestController - deletaCliente");
+    }
+
     private String getUsuarioByToken(String token) {
         log.debug("[token] {}", token);
         String usuario = tokenService.getUsuarioByBearerToken(token)

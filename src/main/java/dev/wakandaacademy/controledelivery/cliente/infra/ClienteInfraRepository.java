@@ -38,4 +38,9 @@ public class ClienteInfraRepository implements ClienteRepository {
         log.info("[finaliza] ClienteInfraRepository - buscaClientePorId");
         return clientePorId;
     }
+
+    @Override
+    public void deletaClientePorId(Cliente clienteDeletado) {
+        clienteMongoDBRepository.delete(clienteDeletado);
+    }
 }
