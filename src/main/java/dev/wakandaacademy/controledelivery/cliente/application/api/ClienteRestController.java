@@ -1,12 +1,15 @@
 package dev.wakandaacademy.controledelivery.cliente.application.api;
 
 import dev.wakandaacademy.controledelivery.cliente.application.service.ClienteService;
+import dev.wakandaacademy.controledelivery.cliente.domain.Cliente;
 import dev.wakandaacademy.controledelivery.config.security.service.TokenService;
 import dev.wakandaacademy.controledelivery.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.UUID;
 
 @RestController
 @Log4j2
@@ -22,6 +25,15 @@ public class ClienteRestController implements ClienteAPI {
         ClienteIdResponse clienteCriado = clienteService.criaNovoCliente(usuario, clienteRequest);
         log.info("[finaliza] ClienteRestController - postNovoCliente");
         return clienteCriado;
+    }
+
+    @Override
+    public ClienteDetalhadoResponse consultaCliente(String token, UUID idCliente) {
+        log.info("[inicia] ClienteRestController - consultaCliente");
+        String emailUsuario = getUsuarioByToken(token);
+        Cliente cliente = clienteService.consultaCliente(emailUsuario, idCliente);
+        log.info("[finaliza] ClienteRestController - consultaCliente");
+        return new ClienteDetalhadoResponse(cliente);
     }
 
     private String getUsuarioByToken(String token) {

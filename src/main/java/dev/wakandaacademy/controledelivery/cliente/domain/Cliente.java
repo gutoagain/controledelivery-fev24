@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
@@ -21,12 +22,16 @@ public class Cliente {
     private UUID idCliente;
     @NotBlank
     private String nomeCliente;
+    @Email
+    @Indexed(unique = true)
+    private String email;
     @Indexed
     private UUID idUsuario;
 
     public Cliente(ClienteRequest clienteRequest) {
         this.idCliente = UUID.randomUUID();
         this.nomeCliente = clienteRequest.getNomeCliente();
+        this.email = clienteRequest.getEmail();
         this.idUsuario = clienteRequest.getIdUsuario();
     }
 }
