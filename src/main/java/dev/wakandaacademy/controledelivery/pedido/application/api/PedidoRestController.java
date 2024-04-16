@@ -2,8 +2,10 @@ package dev.wakandaacademy.controledelivery.pedido.application.api;
 
 import dev.wakandaacademy.controledelivery.cliente.application.api.ClienteDetalhadoResponse;
 import dev.wakandaacademy.controledelivery.cliente.application.api.ClienteRestController;
+import dev.wakandaacademy.controledelivery.cliente.domain.Cliente;
 import dev.wakandaacademy.controledelivery.config.security.service.TokenService;
 import dev.wakandaacademy.controledelivery.pedido.application.service.PedidoService;
+import dev.wakandaacademy.controledelivery.pedido.domain.Pedido;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,7 +31,9 @@ public class PedidoRestController implements PedidoAPI {
     @Override
     public PedidoDetalhadoResponse consultaPedido(String token, UUID idPedido) {
         log.info("[inicia] PedidoRestController - consultaPedido");
+        String emailUsuario = clienteRestController.getUsuarioByToken(token);
+        Pedido pedido = pedidoService.consultaPedido(emailUsuario, idPedido);
         log.info("[finaliza] PedidoRestController - consultaPedido");
-        return null;
+        return new PedidoDetalhadoResponse(pedido);
     }
 }
