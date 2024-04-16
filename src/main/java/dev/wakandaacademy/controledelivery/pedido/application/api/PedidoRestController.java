@@ -50,6 +50,8 @@ public class PedidoRestController implements PedidoAPI {
     @Override
     public void alteraPedido(String token, UUID idPedido, EditaPedidoRequest pedidoRequest) {
         log.info("[inicia] PedidoRestController - alteraPedido");
+        String usuario = clienteRestController.getUsuarioByToken(token);
+        pedidoService.alteraPedido(usuario, idPedido, pedidoRequest);
         log.info("[finaliza] PedidoRestController - alteraPedido");
     }
 }
