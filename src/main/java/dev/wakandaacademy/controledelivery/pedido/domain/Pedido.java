@@ -1,5 +1,6 @@
 package dev.wakandaacademy.controledelivery.pedido.domain;
 
+import dev.wakandaacademy.controledelivery.pedido.application.api.EditaPedidoRequest;
 import dev.wakandaacademy.controledelivery.pedido.application.api.PedidoRequest;
 import lombok.*;
 import lombok.extern.log4j.Log4j2;
@@ -34,5 +35,9 @@ public class Pedido {
         this.idCliente = pedidoRequest.getIdCliente();
         this.status = StatusPedido.AGUARDANDO_CONFIRMACAO;
         this.posicao = posicaoDoNovoPedido;
+    }
+
+    public void altera(EditaPedidoRequest pedidoRequest) {
+        this.nomeProduto = pedidoRequest.getNomeProduto();
     }
 }
