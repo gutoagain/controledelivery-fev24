@@ -10,6 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -45,5 +46,13 @@ public class PedidoInfraRepository implements PedidoRepository {
         Optional<Pedido> pedidoPorId = pedidoMongoDBRepository.findById(idPedido);
         log.info("[finaliza] PedidoInfraRepository - buscaPedidoPorId");
         return pedidoPorId;
+    }
+
+    @Override
+    public List<Pedido> listaPedidosCliente(UUID idCliente) {
+        log.info("[inicial] - TarefaInfraRepository - buscaTodasSuasTarefa");
+        List<Pedido> listaPedido = pedidoMongoDBRepository.findAllByIdClienteOrderByPosicaoAsc(idCliente);
+        log.info("[finaliza] - TarefaInfraRepository - buscaTodasSuasTarefa");
+        return listaPedido;
     }
 }

@@ -48,7 +48,8 @@ public class PedidoApplicationService implements PedidoService {
     @Override
     public List<PedidoDetalhadoResponse> listaPedidosCliente(String usuario, UUID idCliente) {
         log.info("[inicia] - PedidoApplicationService - listaPedidosCliente");
+        List<Pedido> listaPedido = pedidoRepository.listaPedidosCliente(idCliente);
         log.info("[finaliza] - PedidoApplicationService - listaPedidosCliente");
-        return null;
+        return PedidoDetalhadoResponse.converte(listaPedido);
     }
 }
