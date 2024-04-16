@@ -55,4 +55,9 @@ public class PedidoInfraRepository implements PedidoRepository {
         log.info("[finaliza] - TarefaInfraRepository - buscaTodasSuasTarefa");
         return listaPedido;
     }
+
+    @Override
+    public void deletaPedidoPorId(Pedido pedidoDeletado) {
+        pedidoMongoDBRepository.delete(pedidoDeletado);
+    }
 }
