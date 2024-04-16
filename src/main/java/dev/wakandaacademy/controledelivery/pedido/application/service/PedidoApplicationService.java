@@ -3,6 +3,7 @@ package dev.wakandaacademy.controledelivery.pedido.application.service;
 import dev.wakandaacademy.controledelivery.cliente.application.repository.ClienteRepository;
 import dev.wakandaacademy.controledelivery.cliente.domain.Cliente;
 import dev.wakandaacademy.controledelivery.handler.APIException;
+import dev.wakandaacademy.controledelivery.pedido.application.api.EditaPedidoRequest;
 import dev.wakandaacademy.controledelivery.pedido.application.api.PedidoDetalhadoResponse;
 import dev.wakandaacademy.controledelivery.pedido.application.api.PedidoIdResponse;
 import dev.wakandaacademy.controledelivery.pedido.application.api.PedidoRequest;
@@ -51,5 +52,14 @@ public class PedidoApplicationService implements PedidoService {
         List<Pedido> listaPedido = pedidoRepository.listaPedidosCliente(idCliente);
         log.info("[finaliza] - PedidoApplicationService - listaPedidosCliente");
         return PedidoDetalhadoResponse.converte(listaPedido);
+    }
+
+    @Override
+    public void alteraPedido(String usuario, UUID idPedido, EditaPedidoRequest pedidoRequest) {
+        log.info("[inicia] - PedidoApplicationService - alteraPedido");
+        Pedido pedido = consultaPedido(usuario, idPedido);
+        pedido.altera(pedidoRequest);
+        pedidoRepository.salva(pedido);
+        log.info("[finaliza] - PedidoApplicationService - alteraPedido");
     }
 }
