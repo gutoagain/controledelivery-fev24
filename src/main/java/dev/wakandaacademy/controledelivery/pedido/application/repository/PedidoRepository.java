@@ -11,4 +11,5 @@ public interface PedidoRepository {
     int contarPedidosDoCliente(UUID idCliente);
     Optional<Pedido> buscaPedidoPorId(UUID idPedido);
     List<Pedido> listaPedidosCliente(UUID idCliente);
+    void deletaPedidoPorId(Pedido pedidoDeletado);
 }

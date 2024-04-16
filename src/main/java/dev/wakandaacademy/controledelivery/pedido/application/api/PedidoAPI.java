@@ -15,16 +15,24 @@ public interface PedidoAPI {
     @ResponseStatus(code = HttpStatus.CREATED)
     PedidoIdResponse postNovoPedido(@RequestHeader(name = "Authorization", required = true) String token,
                                     @RequestBody @Valid PedidoRequest pedidoRequest);
+
     @GetMapping("/{idPedido}")
     @ResponseStatus(code = HttpStatus.OK)
     PedidoDetalhadoResponse consultaPedido(@RequestHeader(name = "Authorization", required = true) String token,
                                              @PathVariable UUID idPedido);
+
     @GetMapping("/listaPedidos/{idCliente}")
     @ResponseStatus(code = HttpStatus.OK)
     List<PedidoDetalhadoResponse> listaPedidosCliente(
             @RequestHeader(name = "Authorization", required = true) String token, @PathVariable UUID idCliente);
+
     @PatchMapping("/alteraPedido/{idPedido}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void alteraPedido(@RequestHeader(name = "Authorization", required = true) String token, @PathVariable UUID idPedido,
                      @RequestBody @Valid EditaPedidoRequest pedidoRequest);
+
+    @DeleteMapping("/deletaPedido/{idPedido}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deletaPedido(@RequestHeader(name = "Authorization", required = true) String token,
+                       @PathVariable UUID idPedido);
 }

@@ -62,4 +62,12 @@ public class PedidoApplicationService implements PedidoService {
         pedidoRepository.salva(pedido);
         log.info("[finaliza] - PedidoApplicationService - alteraPedido");
     }
+
+    @Override
+    public void deletaPedido(String usuario, UUID idPedido) {
+        log.info("[inicia] PedidoApplicationService - deletaPedido");
+        Pedido pedidoDeletado = consultaPedido(usuario, idPedido);
+        pedidoRepository.deletaPedidoPorId(pedidoDeletado);
+        log.info("[finaliza] PedidoApplicationService - deletaPedido");
+    }
 }
