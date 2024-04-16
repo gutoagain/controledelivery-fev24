@@ -52,7 +52,7 @@ public class ClienteRestController implements ClienteAPI {
         log.info("[finaliza] ClienteRestController - deletaCliente");
     }
 
-    private String getUsuarioByToken(String token) {
+    public String getUsuarioByToken(String token) {
         log.debug("[token] {}", token);
         String usuario = tokenService.getUsuarioByBearerToken(token)
                 .orElseThrow(() -> APIException.build(HttpStatus.UNAUTHORIZED, token));
