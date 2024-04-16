@@ -23,5 +23,8 @@ public interface PedidoAPI {
     @ResponseStatus(code = HttpStatus.OK)
     List<PedidoDetalhadoResponse> listaPedidosCliente(
             @RequestHeader(name = "Authorization", required = true) String token, @PathVariable UUID idCliente);
-
+    @PatchMapping("/alteraPedido/{idPedido}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void alteraPedido(@RequestHeader(name = "Authorization", required = true) String token, @PathVariable UUID idPedido,
+                     @RequestBody @Valid EditaPedidoRequest pedidoRequest);
 }

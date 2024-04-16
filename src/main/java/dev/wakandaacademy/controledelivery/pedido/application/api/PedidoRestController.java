@@ -46,4 +46,10 @@ public class PedidoRestController implements PedidoAPI {
         log.info("[finaliza] PedidoRestController - listaPedidosCliente");
         return pedidosCliente;
     }
+
+    @Override
+    public void alteraPedido(String token, UUID idPedido, EditaPedidoRequest pedidoRequest) {
+        log.info("[inicia] PedidoRestController - alteraPedido");
+        log.info("[finaliza] PedidoRestController - alteraPedido");
+    }
 }
