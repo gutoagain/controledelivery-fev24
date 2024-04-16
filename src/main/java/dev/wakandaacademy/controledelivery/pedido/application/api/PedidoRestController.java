@@ -58,6 +58,8 @@ public class PedidoRestController implements PedidoAPI {
     @Override
     public void deletaPedido(String token, UUID idPedido) {
         log.info("[inicia] PedidoRestController - deletaPedido");
+        String usuario = clienteRestController.getUsuarioByToken(token);
+        pedidoService.deletaPedido(usuario, idPedido);
         log.info("[finaliza] PedidoRestController - deletaPedido");
     }
 }
