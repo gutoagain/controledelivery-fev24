@@ -1,5 +1,6 @@
 package dev.wakandaacademy.controledelivery.pedido.infra;
 
+import dev.wakandaacademy.controledelivery.cliente.domain.Cliente;
 import dev.wakandaacademy.controledelivery.handler.APIException;
 import dev.wakandaacademy.controledelivery.pedido.application.repository.PedidoRepository;
 import dev.wakandaacademy.controledelivery.pedido.domain.Pedido;
@@ -9,6 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -35,5 +37,13 @@ public class PedidoInfraRepository implements PedidoRepository {
         int contarPedidos = pedidoMongoDBRepository.countByIdCliente(idCliente);
         log.info("[finaliza] PedidoInfraRepository - contarPedidosDoCliente");
         return contarPedidos;
+    }
+
+    @Override
+    public Optional<Pedido> buscaPedidoPorId(UUID idPedido) {
+        log.info("[inicia] PedidoInfraRepository - buscaPedidoPorId");
+        Optional<Pedido> pedidoPorId = pedidoMongoDBRepository.findById(idPedido);
+        log.info("[finaliza] PedidoInfraRepository - buscaPedidoPorId");
+        return pedidoPorId;
     }
 }
