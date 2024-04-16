@@ -1,12 +1,17 @@
 package dev.wakandaacademy.controledelivery.pedido.application.service;
 
 import dev.wakandaacademy.controledelivery.cliente.application.repository.ClienteRepository;
+import dev.wakandaacademy.controledelivery.cliente.domain.Cliente;
+import dev.wakandaacademy.controledelivery.handler.APIException;
 import dev.wakandaacademy.controledelivery.pedido.application.api.PedidoIdResponse;
 import dev.wakandaacademy.controledelivery.pedido.application.api.PedidoRequest;
 import dev.wakandaacademy.controledelivery.pedido.application.repository.PedidoRepository;
 import dev.wakandaacademy.controledelivery.pedido.domain.Pedido;
+import dev.wakandaacademy.controledelivery.usuario.application.repository.UsuarioRepository;
+import dev.wakandaacademy.controledelivery.usuario.domain.Usuario;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -16,6 +21,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class PedidoApplicationService implements PedidoService {
     private final PedidoRepository pedidoRepository;
+    private final UsuarioRepository usuarioRepository;
 
     @Override
     public PedidoIdResponse criaNovoPedido(String usuario, PedidoRequest pedidoRequest) {
@@ -29,7 +35,11 @@ public class PedidoApplicationService implements PedidoService {
     @Override
     public Pedido consultaPedido(String emailUsuario, UUID idPedido) {
         log.info("[inicia] PedidoApplicationService - consultaPedido");
+        Usuario usuarioPorEmail = usuarioRepository.buscaUsuarioPorEmail(emailUsuario);
+        log.info("[usuarioPorEmail] {}", usuarioPorEmail);
+        Pedido pedido = pedidoRepository.buscaPedidoPorId(idPedido)
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Pedido não encontrado!"));
         log.info("[finaliza] PedidoApplicationService - consultaPedido");
-        return null;
+        return pedido;
     }
 }
