@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -35,5 +36,14 @@ public class PedidoRestController implements PedidoAPI {
         Pedido pedido = pedidoService.consultaPedido(emailUsuario, idPedido);
         log.info("[finaliza] PedidoRestController - consultaPedido");
         return new PedidoDetalhadoResponse(pedido);
+    }
+
+    @Override
+    public List<PedidoDetalhadoResponse> listaPedidosCliente(String token, UUID idCliente) {
+        log.info("[inicia] PedidoRestController - listaPedidosCliente");
+        String usuario = clienteRestController.getUsuarioByToken(token);
+        List<PedidoDetalhadoResponse> pedidosCliente = pedidoService.listaPedidosCliente(usuario, idCliente);
+        log.info("[finaliza] PedidoRestController - listaPedidosCliente");
+        return pedidosCliente;
     }
 }

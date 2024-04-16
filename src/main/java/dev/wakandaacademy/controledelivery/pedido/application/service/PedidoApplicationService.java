@@ -3,6 +3,7 @@ package dev.wakandaacademy.controledelivery.pedido.application.service;
 import dev.wakandaacademy.controledelivery.cliente.application.repository.ClienteRepository;
 import dev.wakandaacademy.controledelivery.cliente.domain.Cliente;
 import dev.wakandaacademy.controledelivery.handler.APIException;
+import dev.wakandaacademy.controledelivery.pedido.application.api.PedidoDetalhadoResponse;
 import dev.wakandaacademy.controledelivery.pedido.application.api.PedidoIdResponse;
 import dev.wakandaacademy.controledelivery.pedido.application.api.PedidoRequest;
 import dev.wakandaacademy.controledelivery.pedido.application.repository.PedidoRepository;
@@ -14,6 +15,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -41,5 +43,13 @@ public class PedidoApplicationService implements PedidoService {
                 .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Pedido não encontrado!"));
         log.info("[finaliza] PedidoApplicationService - consultaPedido");
         return pedido;
+    }
+
+    @Override
+    public List<PedidoDetalhadoResponse> listaPedidosCliente(String usuario, UUID idCliente) {
+        log.info("[inicia] - PedidoApplicationService - listaPedidosCliente");
+        List<Pedido> listaPedido = pedidoRepository.listaPedidosCliente(idCliente);
+        log.info("[finaliza] - PedidoApplicationService - listaPedidosCliente");
+        return PedidoDetalhadoResponse.converte(listaPedido);
     }
 }
