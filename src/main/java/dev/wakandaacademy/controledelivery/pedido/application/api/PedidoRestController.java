@@ -41,7 +41,9 @@ public class PedidoRestController implements PedidoAPI {
     @Override
     public List<PedidoDetalhadoResponse> listaPedidosCliente(String token, UUID idCliente) {
         log.info("[inicia] PedidoRestController - listaPedidosCliente");
+        String usuario = clienteRestController.getUsuarioByToken(token);
+        List<PedidoDetalhadoResponse> pedidosCliente = pedidoService.listaPedidosCliente(usuario, idCliente);
         log.info("[finaliza] PedidoRestController - listaPedidosCliente");
-        return null;
+        return pedidosCliente;
     }
 }
