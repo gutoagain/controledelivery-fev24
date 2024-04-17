@@ -55,4 +55,12 @@ public class EntregaInfraRepository implements EntregaRepository {
         mongoTemplate.updateFirst(query, update, Pedido.class);
         log.info("[finaliza] EntregaInfraRepository - alteraPedidoParaConfirmado");
     }
+
+    @Override
+    public Optional<Entrega> buscaEntregaPorId(UUID idEntrega) {
+        log.info("[inicia] EntregaInfraRepository - buscaEntregaPorId");
+        Optional<Entrega> entregaPorId = entregaMongoDBRepository.findById(idEntrega);
+        log.info("[finaliza] EntregaInfraRepository - buscaEntregaPorId");
+        return entregaPorId;
+    }
 }

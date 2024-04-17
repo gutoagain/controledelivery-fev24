@@ -28,7 +28,7 @@ public class EntregaApplicationService implements EntregaService {
         boolean pedidoPossuiEntrega = entregaRepository
                 .verificaSePedidoPossuiEntrega(entregaRequest.getIdPedido());
         if (pedidoPossuiEntrega) {
-            throw APIException.build(HttpStatus.UNAUTHORIZED, "Pedido já popssui uma entrega");
+            throw APIException.build(HttpStatus.UNAUTHORIZED, "Pedido já possui uma entrega");
         }
         entregaRepository.alteraPedidoParaConfirmado(entregaRequest.getIdPedido());
         Entrega entregaCriada = entregaRepository.salva(new Entrega(entregaRequest));
@@ -39,7 +39,9 @@ public class EntregaApplicationService implements EntregaService {
     @Override
     public Entrega consultaEntrega(String emailUsuario, UUID idEntrega) {
         log.info("[inicia] EntregaApplicationService - consultaEntrega");
+        Entrega entrega = entregaRepository.buscaEntregaPorId(idEntrega)
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Entrega não encontrada!"));
         log.info("[finaliza] EntregaApplicationService - consultaEntrega");
-        return null;
+        return entrega;
     }
 }
