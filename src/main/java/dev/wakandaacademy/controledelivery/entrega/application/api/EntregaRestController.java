@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Log4j2
 @RequiredArgsConstructor
 public class EntregaRestController implements EntregaAPI {
+
     private final ClienteRestController clienteRestController;
     private final EntregaService entregaService;
 

@@ -23,6 +23,7 @@ import java.util.UUID;
 @Log4j2
 @RequiredArgsConstructor
 public class PedidoApplicationService implements PedidoService {
+
     private final PedidoRepository pedidoRepository;
     private final UsuarioRepository usuarioRepository;
 

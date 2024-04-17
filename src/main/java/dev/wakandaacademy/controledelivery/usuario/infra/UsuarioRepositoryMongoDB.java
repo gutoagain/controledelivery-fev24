@@ -14,6 +14,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Log4j2
 public class UsuarioRepositoryMongoDB implements UsuarioRepository {
+
     private final UsuarioMongoSpringRepository usuarioMongoRepository;
 
     @Override

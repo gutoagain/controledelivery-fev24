@@ -18,6 +18,7 @@ import java.util.UUID;
 @Log4j2
 @RequiredArgsConstructor
 public class PedidoInfraRepository implements PedidoRepository {
+
     private final PedidoMongoDBRepository pedidoMongoDBRepository;
 
     @Override

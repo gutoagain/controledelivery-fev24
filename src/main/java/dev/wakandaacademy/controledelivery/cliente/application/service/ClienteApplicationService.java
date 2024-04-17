@@ -19,6 +19,7 @@ import java.util.UUID;
 @Log4j2
 @RequiredArgsConstructor
 public class ClienteApplicationService implements ClienteService {
+
     private final ClienteRepository clienteRepository;
     private final UsuarioRepository usuarioRepository;
 

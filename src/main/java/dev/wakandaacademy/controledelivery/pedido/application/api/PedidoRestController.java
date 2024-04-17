@@ -17,6 +17,7 @@ import java.util.UUID;
 @Log4j2
 @RequiredArgsConstructor
 public class PedidoRestController implements PedidoAPI {
+
     private final ClienteRestController clienteRestController;
     private final PedidoService pedidoService;
 
