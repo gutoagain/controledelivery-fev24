@@ -19,20 +19,22 @@ public interface PedidoAPI {
     @GetMapping("/{idPedido}")
     @ResponseStatus(code = HttpStatus.OK)
     PedidoDetalhadoResponse consultaPedido(@RequestHeader(name = "Authorization", required = true) String token,
-                                             @PathVariable UUID idPedido);
+                                           @PathVariable UUID idPedido);
 
     @GetMapping("/listaPedidos/{idCliente}")
     @ResponseStatus(code = HttpStatus.OK)
     List<PedidoDetalhadoResponse> listaPedidosCliente(
-            @RequestHeader(name = "Authorization", required = true) String token, @PathVariable UUID idCliente);
+            @RequestHeader(name = "Authorization", required = true) String token,
+            @PathVariable UUID idCliente);
 
     @PatchMapping("/alteraPedido/{idPedido}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void alteraPedido(@RequestHeader(name = "Authorization", required = true) String token, @PathVariable UUID idPedido,
-                     @RequestBody @Valid EditaPedidoRequest pedidoRequest);
+    void alteraPedido(@RequestHeader(name = "Authorization", required = true) String token,
+                      @PathVariable UUID idPedido,
+                      @RequestBody @Valid EditaPedidoRequest pedidoRequest);
 
     @DeleteMapping("/deletaPedido/{idPedido}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deletaPedido(@RequestHeader(name = "Authorization", required = true) String token,
-                       @PathVariable UUID idPedido);
+                      @PathVariable UUID idPedido);
 }

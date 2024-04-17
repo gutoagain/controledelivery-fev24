@@ -1,6 +1,7 @@
 package dev.wakandaacademy.controledelivery.entrega.application.service;
 
 import dev.wakandaacademy.controledelivery.cliente.application.repository.ClienteRepository;
+import dev.wakandaacademy.controledelivery.entrega.application.api.EditaEntregaRequest;
 import dev.wakandaacademy.controledelivery.entrega.application.api.EntregaIdResponse;
 import dev.wakandaacademy.controledelivery.entrega.application.api.EntregaRequest;
 import dev.wakandaacademy.controledelivery.entrega.application.repository.EntregaRepository;
@@ -43,5 +44,14 @@ public class EntregaApplicationService implements EntregaService {
                 .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Entrega não encontrada!"));
         log.info("[finaliza] EntregaApplicationService - consultaEntrega");
         return entrega;
+    }
+
+    @Override
+    public void alteraDadosEntrega(String usuario, UUID idEntrega, EditaEntregaRequest entregaRequest) {
+        log.info("[inicia] EntregaApplicationService - alteraDadosEntrega");
+        Entrega entrega = consultaEntrega(usuario, idEntrega);
+        entrega.altera(entregaRequest);
+        entregaRepository.salva(entrega);
+        log.info("[finaliza] EntregaApplicationService - alteraDadosEntrega");
     }
 }

@@ -37,4 +37,12 @@ public class EntregaRestController implements EntregaAPI {
         log.info("[finaliza] EntregaRestController - consultaEntrega");
         return new EntregaDetalhadoResponse(entrega);
     }
+
+    @Override
+    public void alteraDadosEntrega(String token, UUID idEntrega, EditaEntregaRequest entregaRequest) {
+        log.info("[inicia] EntregaRestController - alteraEndereco");
+        String usuario = clienteRestController.getUsuarioByToken(token);
+        entregaService.alteraDadosEntrega(usuario, idEntrega, entregaRequest);
+        log.info("[finaliza] EntregaRestController - alteraEndereco");
+    }
 }
