@@ -49,6 +49,8 @@ public class EntregaRestController implements EntregaAPI {
     @Override
     public void deletaEntrega(String token, UUID idEntrega) {
         log.info("[inicia] EntregaRestController - deletaEntrega");
+        String usuario = clienteRestController.getUsuarioByToken(token);
+        entregaService.deletaEntrega(usuario, idEntrega);
         log.info("[finaliza] EntregaRestController - deletaEntrega");
     }
 }
