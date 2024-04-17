@@ -2,6 +2,8 @@ package dev.wakandaacademy.controledelivery.pedido.application.service;
 
 import dev.wakandaacademy.controledelivery.cliente.application.repository.ClienteRepository;
 import dev.wakandaacademy.controledelivery.cliente.domain.Cliente;
+import dev.wakandaacademy.controledelivery.entrega.application.repository.EntregaRepository;
+import dev.wakandaacademy.controledelivery.entrega.domain.Entrega;
 import dev.wakandaacademy.controledelivery.handler.APIException;
 import dev.wakandaacademy.controledelivery.pedido.application.api.EditaPedidoRequest;
 import dev.wakandaacademy.controledelivery.pedido.application.api.PedidoDetalhadoResponse;
@@ -26,6 +28,7 @@ public class PedidoApplicationService implements PedidoService {
 
     private final PedidoRepository pedidoRepository;
     private final UsuarioRepository usuarioRepository;
+    private final EntregaRepository entregaRepository;
 
     @Override
     public PedidoIdResponse criaNovoPedido(String usuario, PedidoRequest pedidoRequest) {
@@ -68,6 +71,11 @@ public class PedidoApplicationService implements PedidoService {
     public void deletaPedido(String usuario, UUID idPedido) {
         log.info("[inicia] PedidoApplicationService - deletaPedido");
         Pedido pedidoDeletado = consultaPedido(usuario, idPedido);
+//        Entrega entrega = pedidoDeletado.getEntrega();
+//        if (entrega != null) {
+//            // Se houver entrega associada, deleta a entrega
+//            entregaRepository.deletaEntrega(entrega.getIdEntrega());
+//            }
         pedidoRepository.deletaPedidoPorId(pedidoDeletado);
         log.info("[finaliza] PedidoApplicationService - deletaPedido");
     }

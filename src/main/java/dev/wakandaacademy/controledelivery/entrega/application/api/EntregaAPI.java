@@ -24,4 +24,9 @@ public interface EntregaAPI {
     void alteraDadosEntrega(@RequestHeader(name = "Authorization", required = true) String token,
                             @PathVariable UUID idEntrega,
                             @RequestBody @Valid EditaEntregaRequest entregaRequest);
+
+    @DeleteMapping("/deletaEntrega/{idEntrega}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deletaEntrega(@RequestHeader(name = "Authorization", required = true) String token,
+                      @PathVariable UUID idEntrega);
 }

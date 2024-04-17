@@ -45,4 +45,10 @@ public class EntregaRestController implements EntregaAPI {
         entregaService.alteraDadosEntrega(usuario, idEntrega, entregaRequest);
         log.info("[finaliza] EntregaRestController - alteraEndereco");
     }
+
+    @Override
+    public void deletaEntrega(String token, UUID idEntrega) {
+        log.info("[inicia] EntregaRestController - deletaEntrega");
+        log.info("[finaliza] EntregaRestController - deletaEntrega");
+    }
 }
