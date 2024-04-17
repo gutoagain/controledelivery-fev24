@@ -13,6 +13,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @Log4j2
 @RequiredArgsConstructor
@@ -32,5 +34,12 @@ public class EntregaApplicationService implements EntregaService {
         Entrega entregaCriada = entregaRepository.salva(new Entrega(entregaRequest));
         log.info("[finaliza] EntregaApplicationService - criaNovaEntrega");
         return EntregaIdResponse.builder().idEntrega(entregaCriada.getIdEntrega()).build();
+    }
+
+    @Override
+    public Entrega consultaEntrega(String emailUsuario, UUID idEntrega) {
+        log.info("[inicia] EntregaApplicationService - consultaEntrega");
+        log.info("[finaliza] EntregaApplicationService - consultaEntrega");
+        return null;
     }
 }
