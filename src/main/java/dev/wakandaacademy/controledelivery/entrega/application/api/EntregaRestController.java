@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 @Log4j2
 @RequiredArgsConstructor
@@ -22,5 +24,12 @@ public class EntregaRestController implements EntregaAPI {
         EntregaIdResponse entregaCriada = entregaService.criaNovaEntrega(usuario, entregaRequest);
         log.info("[finaliza] EntregaRestController - postNovaEntrega");
         return entregaCriada;
+    }
+
+    @Override
+    public EntregaDetalhadoResponse consultaEntrega(String token, UUID idEntrega) {
+        log.info("[inicia] EntregaRestController - consultaEntrega");
+        log.info("[finaliza] EntregaRestController - consultaEntrega");
+        return null;
     }
 }
