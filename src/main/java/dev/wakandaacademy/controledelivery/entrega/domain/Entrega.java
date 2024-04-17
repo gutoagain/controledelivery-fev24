@@ -1,5 +1,6 @@
 package dev.wakandaacademy.controledelivery.entrega.domain;
 
+import dev.wakandaacademy.controledelivery.entrega.application.api.EditaEntregaRequest;
 import dev.wakandaacademy.controledelivery.entrega.application.api.EntregaRequest;
 import dev.wakandaacademy.controledelivery.pedido.domain.StatusPedido;
 import lombok.*;
@@ -32,5 +33,9 @@ public class Entrega {
         this.endereco = entregaRequest.getEndereco();
         this.idPedido = entregaRequest.getIdPedido();
         this.status = StatusEntrega.A_FAZER;
+    }
+
+    public void altera(EditaEntregaRequest entregaRequest) {
+        this.endereco = entregaRequest.getEndereco();
     }
 }
