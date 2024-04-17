@@ -17,6 +17,7 @@ import java.util.UUID;
 @Log4j2
 @RequiredArgsConstructor
 public class ClienteInfraRepository implements ClienteRepository {
+
     private final ClienteMongoDBRepository clienteMongoDBRepository;
 
     @Override

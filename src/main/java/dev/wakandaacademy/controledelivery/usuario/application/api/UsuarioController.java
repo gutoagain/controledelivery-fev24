@@ -14,6 +14,7 @@ import java.util.UUID;
 @Log4j2
 @RequiredArgsConstructor
 public class UsuarioController implements UsuarioAPI {
+
     private final UsuarioService usuarioAppplicationService;
 
     @Override

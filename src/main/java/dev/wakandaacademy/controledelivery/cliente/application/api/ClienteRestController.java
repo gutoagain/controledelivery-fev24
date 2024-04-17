@@ -15,6 +15,7 @@ import java.util.UUID;
 @Log4j2
 @RequiredArgsConstructor
 public class ClienteRestController implements ClienteAPI {
+
     private final TokenService tokenService;
     private final ClienteService clienteService;
 
