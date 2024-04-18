@@ -83,6 +83,8 @@ public class PedidoRestController implements PedidoAPI {
     @Override
     public void mudaStatusParaCancelado(String token, UUID idPedido) {
         log.info("[inicia] PedidoRestController - mudaStatusParaCancelado");
+        String usuario = clienteRestController.getUsuarioByToken(token);
+        pedidoService.mudaStatusParaCancelado(usuario, idPedido);
         log.info("[finaliza] PedidoRestController - mudaStatusParaCancelado");
     }
 }
