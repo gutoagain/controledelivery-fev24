@@ -7,4 +7,5 @@ import java.util.UUID;
 
 public interface EntregaMongoDBRepository  extends MongoRepository<Entrega, UUID> {
     boolean existsByIdPedido(UUID idPedido);
+    void deleteByIdPedido(UUID idPedido);
 }

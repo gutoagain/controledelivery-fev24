@@ -10,4 +10,6 @@ public interface EntregaRepository {
     boolean verificaSePedidoPossuiEntrega(UUID idPedido);
     void alteraPedidoParaConfirmado(UUID idPedido);
     Optional<Entrega> buscaEntregaPorId(UUID idEntrega);
+    void deletaEntregaPorId(Entrega entregaDeletada);
+    void deletaEntregaPorIdPedido(UUID idPedido);
 }

@@ -11,4 +11,5 @@ public interface EntregaService {
     EntregaIdResponse criaNovaEntrega(String usuario, EntregaRequest entregaRequest);
     Entrega consultaEntrega(String emailUsuario, UUID idEntrega);
     void alteraDadosEntrega(String usuario, UUID idEntrega, EditaEntregaRequest entregaRequest);
+    void deletaEntrega(String usuario, UUID idEntrega);
 }

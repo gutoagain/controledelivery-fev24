@@ -1,5 +1,6 @@
 package dev.wakandaacademy.controledelivery.pedido.domain;
 
+import dev.wakandaacademy.controledelivery.entrega.domain.Entrega;
 import dev.wakandaacademy.controledelivery.pedido.application.api.EditaPedidoRequest;
 import dev.wakandaacademy.controledelivery.pedido.application.api.PedidoRequest;
 import lombok.*;
