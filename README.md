@@ -105,6 +105,7 @@ Para funcionar, insira o token do seu usuario na aba Authorization. Tipo de auto
 Caminho: ‘v1/cliente/deletaCliente/{idCliente}’
 
 Esta API irá deletar um cliente existente. Caso não exista cliente, será retornada a mensagem "Cliente não encontrado!".
+Caso cliente for deletado, todos os pedidos e entregas vinculados a ele serão deletados também.
 Para funcionar, insira o token do seu usuario na aba Authorization. Tipo de autorização: Bearer Token.
 
 ### Pedido
