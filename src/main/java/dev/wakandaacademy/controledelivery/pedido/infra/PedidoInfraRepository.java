@@ -63,4 +63,11 @@ public class PedidoInfraRepository implements PedidoRepository {
         pedidoMongoDBRepository.delete(pedidoDeletado);
         log.info("[finaliza] - PedidoInfraRepository - deletaPedidoPorId");
     }
+
+    @Override
+    public void deletaPedidoPorIdCliente(UUID idCliente) {
+        log.info("[inicia] - PedidoInfraRepository - deletaEntregaPorIdCliente");
+        pedidoMongoDBRepository.deleteAllByIdCliente(idCliente);
+        log.info("[finaliza] - PedidoInfraRepository - deletaEntregaPorIdCliente");
+    }
 }

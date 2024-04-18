@@ -12,4 +12,5 @@ public interface PedidoRepository {
     Optional<Pedido> buscaPedidoPorId(UUID idPedido);
     List<Pedido> listaPedidosCliente(UUID idCliente);
     void deletaPedidoPorId(Pedido pedidoDeletado);
+    void deletaPedidoPorIdCliente(UUID idCliente);
 }

@@ -5,7 +5,11 @@ import dev.wakandaacademy.controledelivery.cliente.application.api.ClienteReques
 import dev.wakandaacademy.controledelivery.cliente.application.api.EditaClienteRequest;
 import dev.wakandaacademy.controledelivery.cliente.application.repository.ClienteRepository;
 import dev.wakandaacademy.controledelivery.cliente.domain.Cliente;
+import dev.wakandaacademy.controledelivery.entrega.application.repository.EntregaRepository;
+import dev.wakandaacademy.controledelivery.entrega.application.service.EntregaService;
 import dev.wakandaacademy.controledelivery.handler.APIException;
+import dev.wakandaacademy.controledelivery.pedido.application.repository.PedidoRepository;
+import dev.wakandaacademy.controledelivery.pedido.domain.Pedido;
 import dev.wakandaacademy.controledelivery.usuario.application.repository.UsuarioRepository;
 import dev.wakandaacademy.controledelivery.usuario.domain.Usuario;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +17,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -22,6 +27,8 @@ public class ClienteApplicationService implements ClienteService {
 
     private final ClienteRepository clienteRepository;
     private final UsuarioRepository usuarioRepository;
+    private final PedidoRepository pedidoRepository;
+    private final EntregaRepository entregaRepository;
 
     @Override
     public ClienteIdResponse criaNovoCliente(String usuario, ClienteRequest clienteRequest) {
@@ -56,6 +63,11 @@ public class ClienteApplicationService implements ClienteService {
     public void deletaCliente(String usuario, UUID idCliente) {
         log.info("[inicia] ClienteApplicationService - deletaCliente");
         Cliente clienteDeletado = consultaCliente(usuario, idCliente);
+        List<Pedido> pedidosDoCliente = pedidoRepository.listaPedidosCliente(idCliente);
+        for (Pedido pedido : pedidosDoCliente) {
+            entregaRepository.deletaEntregaPorIdPedido(pedido.getIdPedido());
+        }
+        pedidoRepository.deletaPedidoPorIdCliente(idCliente);
         clienteRepository.deletaClientePorId(clienteDeletado);
         log.info("[finaliza] ClienteApplicationService - deletaCliente");
     }
