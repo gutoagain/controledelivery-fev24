@@ -29,8 +29,6 @@ public class Pedido {
     private StatusPedido status = StatusPedido.AGUARDANDO_CONFIRMACAO;
     @Setter
     private int posicao;
-    @Indexed
-    private Entrega entrega;
 
     public Pedido(PedidoRequest pedidoRequest, int posicaoDoNovoPedido) {
         this.idPedido = UUID.randomUUID();

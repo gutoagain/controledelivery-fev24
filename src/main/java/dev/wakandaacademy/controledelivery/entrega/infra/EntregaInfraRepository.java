@@ -63,4 +63,18 @@ public class EntregaInfraRepository implements EntregaRepository {
         log.info("[finaliza] EntregaInfraRepository - buscaEntregaPorId");
         return entregaPorId;
     }
+
+    @Override
+    public void deletaEntregaPorId(Entrega entregaDeletada) {
+        log.info("[inicia] EntregaInfraRepository - deletaEntregaPorId");
+        entregaMongoDBRepository.delete(entregaDeletada);
+        log.info("[finaliza] EntregaInfraRepository - deletaEntregaPorId");
+    }
+
+    @Override
+    public void deletaEntregaPorIdPedido(UUID idPedido) {
+        log.info("[inicia] EntregaInfraRepository - deletaEntregaPorIdPedido");
+        entregaMongoDBRepository.deleteByIdPedido(idPedido);
+        log.info("[finaliza] EntregaInfraRepository - deletaEntregaPorIdPedido");
+    }
 }

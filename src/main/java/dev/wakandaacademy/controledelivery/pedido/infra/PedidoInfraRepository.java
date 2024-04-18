@@ -51,14 +51,16 @@ public class PedidoInfraRepository implements PedidoRepository {
 
     @Override
     public List<Pedido> listaPedidosCliente(UUID idCliente) {
-        log.info("[inicial] - TarefaInfraRepository - buscaTodasSuasTarefa");
+        log.info("[inicia] - PedidoInfraRepository - buscaTodasSuasTarefa");
         List<Pedido> listaPedido = pedidoMongoDBRepository.findAllByIdClienteOrderByPosicaoAsc(idCliente);
-        log.info("[finaliza] - TarefaInfraRepository - buscaTodasSuasTarefa");
+        log.info("[finaliza] - PedidoInfraRepository - buscaTodasSuasTarefa");
         return listaPedido;
     }
 
     @Override
     public void deletaPedidoPorId(Pedido pedidoDeletado) {
+        log.info("[inicia] - PedidoInfraRepository - deletaPedidoPorId");
         pedidoMongoDBRepository.delete(pedidoDeletado);
+        log.info("[finaliza] - PedidoInfraRepository - deletaPedidoPorId");
     }
 }
