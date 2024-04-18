@@ -98,6 +98,10 @@ public class PedidoApplicationService implements PedidoService {
     @Override
     public void mudaStatusParaCancelado(String usuario, UUID idPedido) {
         log.info("[inicia] PedidoApplicationService - mudaStatusParaCancelado");
+        Pedido pedido = consultaPedido(usuario, idPedido);
+        pedido.mudaStatusParaCancelado();
+        entregaService.mudaStatusEntregaParaNaoRealizadaPorIdPedido(idPedido);
+        pedidoRepository.salva(pedido);
         log.info("[finaliza] PedidoApplicationService - mudaStatusParaCancelado");
     }
 }

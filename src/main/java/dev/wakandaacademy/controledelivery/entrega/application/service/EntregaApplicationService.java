@@ -8,6 +8,7 @@ import dev.wakandaacademy.controledelivery.entrega.application.repository.Entreg
 import dev.wakandaacademy.controledelivery.entrega.domain.Entrega;
 import dev.wakandaacademy.controledelivery.handler.APIException;
 import dev.wakandaacademy.controledelivery.pedido.application.api.PedidoIdResponse;
+import dev.wakandaacademy.controledelivery.pedido.application.service.PedidoService;
 import dev.wakandaacademy.controledelivery.pedido.domain.Pedido;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -87,5 +88,18 @@ public class EntregaApplicationService implements EntregaService {
             log.warn("Entrega não encontrada para o pedido com ID: " + idPedido);
         }
         log.info("[finaliza] EntregaApplicationService - mudaStatusEntregaParaConcluidaPorIdPedido");
+    }
+
+    @Override
+    public void mudaStatusEntregaParaNaoRealizadaPorIdPedido(UUID idPedido) {
+        log.info("[inicia] EntregaApplicationService - mudaStatusEntregaParaNaoRealizadaPorIdPedido");
+        Entrega entrega = entregaRepository.buscaEntregaPorIdPedido(idPedido);
+        if (entrega != null) {
+            entrega.mudaStatusParaNaoRealizada();
+            entregaRepository.salva(entrega);
+        } else {
+            log.warn("Entrega não encontrada para o pedido com ID: " + idPedido);
+        }
+        log.info("[finaliza] EntregaApplicationService - mudaStatusEntregaParaNaoRealizadaPorIdPedido");
     }
 }

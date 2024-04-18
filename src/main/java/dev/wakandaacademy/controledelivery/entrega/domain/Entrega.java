@@ -50,4 +50,10 @@ public class Entrega {
         this.status = StatusEntrega.CONCLUIDA;
         log.info("[finaliza] Entrega - mudaStatusParaConcluida");
     }
+
+    public void mudaStatusParaNaoRealizada() {
+        log.info("[inicia] Entrega - mudaStatusParaNaoRealizada");
+        this.status = StatusEntrega.NAO_REALIZADA;
+        log.info("[finaliza] Entrega - mudaStatusParaNaoRealizada");
+    }
 }

@@ -53,4 +53,10 @@ public class Pedido {
         this.status = StatusPedido.ENTREGUE;
         log.info("[finaliza] Pedido - mudaStatusParaEntregue");
     }
+
+    public void mudaStatusParaCancelado() {
+        log.info("[inicia] Pedido - mudaStatusParaCancelado");
+        this.status = StatusPedido.CANCELADO;
+        log.info("[finaliza] Pedido - mudaStatusParaCancelado");
+    }
 }
