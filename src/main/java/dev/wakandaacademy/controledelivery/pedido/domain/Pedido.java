@@ -41,4 +41,10 @@ public class Pedido {
     public void altera(EditaPedidoRequest pedidoRequest) {
         this.nomeProduto = pedidoRequest.getNomeProduto();
     }
+
+    public void mudaStatusParaEnviado() {
+        log.info("[inicia] Pedido - mudaStatusParaEnviado");
+        this.status = StatusPedido.ENVIADO;
+        log.info("[finaliza] Pedido - mudaStatusParaEnviado");
+    }
 }
