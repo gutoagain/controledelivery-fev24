@@ -42,4 +42,9 @@ public interface PedidoAPI {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void mudaStatusParaEnviado(@RequestHeader (name = "Authorization", required = true) String token,
                               @PathVariable UUID idPedido);
+
+    @PatchMapping(value = "/entregue/{idPedido}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void mudaStatusParaEntregue(@RequestHeader (name = "Authorization", required = true) String token,
+                               @PathVariable UUID idPedido);
 }

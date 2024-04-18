@@ -1,10 +1,7 @@
 package dev.wakandaacademy.controledelivery.pedido.application.service;
 
-import dev.wakandaacademy.controledelivery.cliente.application.repository.ClienteRepository;
-import dev.wakandaacademy.controledelivery.cliente.domain.Cliente;
 import dev.wakandaacademy.controledelivery.entrega.application.repository.EntregaRepository;
 import dev.wakandaacademy.controledelivery.entrega.application.service.EntregaService;
-import dev.wakandaacademy.controledelivery.entrega.domain.Entrega;
 import dev.wakandaacademy.controledelivery.handler.APIException;
 import dev.wakandaacademy.controledelivery.pedido.application.api.EditaPedidoRequest;
 import dev.wakandaacademy.controledelivery.pedido.application.api.PedidoDetalhadoResponse;
@@ -86,5 +83,15 @@ public class PedidoApplicationService implements PedidoService {
         entregaService.mudaStatusEntregaParaEmAndamentoPorIdPedido(idPedido);
         pedidoRepository.salva(pedido);
         log.info("[finaliza] PedidoApplicationService - mudaStatusParaEnviado");
+    }
+
+    @Override
+    public void mudaStatusParaEntregue(String usuario, UUID idPedido) {
+        log.info("[inicia] PedidoApplicationService - mudaStatusParaEntregue");
+        Pedido pedido = consultaPedido(usuario, idPedido);
+        pedido.mudaStatusParaEntregue();
+        entregaService.mudaStatusEntregaParaConcluidaPorIdPedido(idPedido);
+        pedidoRepository.salva(pedido);
+        log.info("[finaliza] PedidoApplicationService - mudaStatusParaEntregue");
     }
 }

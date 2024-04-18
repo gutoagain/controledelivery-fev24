@@ -71,4 +71,12 @@ public class PedidoRestController implements PedidoAPI {
         pedidoService.mudaStatusParaEnviado(usuario, idPedido);
         log.info("[finaliza] PedidoRestController - mudaStatusParaEnviado");
     }
+
+    @Override
+    public void mudaStatusParaEntregue(String token, UUID idPedido) {
+        log.info("[inicia] PedidoRestController - mudaStatusParaEntregue");
+        String usuario = clienteRestController.getUsuarioByToken(token);
+        pedidoService.mudaStatusParaEntregue(usuario, idPedido);
+        log.info("[finaliza] PedidoRestController - mudaStatusParaEntregue");
+    }
 }

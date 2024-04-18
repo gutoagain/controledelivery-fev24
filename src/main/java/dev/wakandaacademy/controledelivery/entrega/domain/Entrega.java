@@ -42,6 +42,12 @@ public class Entrega {
     public void mudaStatusParaEmAndamento() {
         log.info("[inicia] Entrega - mudaStatusParaEmAndamento");
         this.status = StatusEntrega.EM_ANDAMENTO;
-        log.info("[inicia] Entrega - mudaStatusParaEmAndamento");
+        log.info("[finaliza] Entrega - mudaStatusParaEmAndamento");
+    }
+
+    public void mudaStatusParaConcluida() {
+        log.info("[inicia] Entrega - mudaStatusParaConcluida");
+        this.status = StatusEntrega.CONCLUIDA;
+        log.info("[finaliza] Entrega - mudaStatusParaConcluida");
     }
 }

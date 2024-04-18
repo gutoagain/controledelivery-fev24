@@ -65,11 +65,27 @@ public class EntregaApplicationService implements EntregaService {
 
     @Override
     public void mudaStatusEntregaParaEmAndamentoPorIdPedido(UUID idPedido) {
-        log.info("[inicia] EntregaApplicationService - mudaStatusParaEmAndamentoPorIdPedido");
-        Entrega entrega = entregaRepository.buscaEntregaPorIdPedido(idPedido)
-                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Entrega não encontrada!"));
+        log.info("[inicia] EntregaApplicationService - mudaStatusEntregaParaEmAndamentoPorIdPedido");
+        Entrega entrega = entregaRepository.buscaEntregaPorIdPedido(idPedido);
+        if (entrega != null) {
         entrega.mudaStatusParaEmAndamento();
         entregaRepository.salva(entrega);
-        log.info("[inicia] EntregaApplicationService - mudaStatusParaEmAndamentoPorIdPedido");
+        } else {
+            log.warn("Entrega não encontrada para o pedido com ID: " + idPedido);
+        }
+        log.info("[finaliza] EntregaApplicationService - mudaStatusEntregaParaEmAndamentoPorIdPedido");
+    }
+
+    @Override
+    public void mudaStatusEntregaParaConcluidaPorIdPedido(UUID idPedido) {
+        log.info("[inicia] EntregaApplicationService - mudaStatusEntregaParaConcluidaPorIdPedido");
+        Entrega entrega = entregaRepository.buscaEntregaPorIdPedido(idPedido);
+        if (entrega != null) {
+            entrega.mudaStatusParaConcluida();
+            entregaRepository.salva(entrega);
+        } else {
+            log.warn("Entrega não encontrada para o pedido com ID: " + idPedido);
+        }
+        log.info("[finaliza] EntregaApplicationService - mudaStatusEntregaParaConcluidaPorIdPedido");
     }
 }

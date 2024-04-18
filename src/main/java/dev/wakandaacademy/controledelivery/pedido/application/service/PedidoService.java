@@ -16,4 +16,5 @@ public interface PedidoService {
     void alteraPedido(String usuario, UUID idPedido, EditaPedidoRequest pedidoRequest);
     void deletaPedido(String usuario, UUID idPedido);
     void mudaStatusParaEnviado(String usuario, UUID idPedido);
+    void mudaStatusParaEntregue(String usuario, UUID idPedido);
 }
