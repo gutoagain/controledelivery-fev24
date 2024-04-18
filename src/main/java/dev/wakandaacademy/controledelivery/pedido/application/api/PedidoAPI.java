@@ -41,10 +41,15 @@ public interface PedidoAPI {
     @PatchMapping(value = "/enviado/{idPedido}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void mudaStatusParaEnviado(@RequestHeader (name = "Authorization", required = true) String token,
-                              @PathVariable UUID idPedido);
+                               @PathVariable UUID idPedido);
 
     @PatchMapping(value = "/entregue/{idPedido}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void mudaStatusParaEntregue(@RequestHeader (name = "Authorization", required = true) String token,
-                               @PathVariable UUID idPedido);
+                                @PathVariable UUID idPedido);
+
+    @PatchMapping(value = "/cancelado/{idPedido}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void mudaStatusParaCancelado(@RequestHeader (name = "Authorization", required = true) String token,
+                                @PathVariable UUID idPedido);
 }
