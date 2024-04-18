@@ -1,0 +1,799 @@
+{
+	"info": {
+		"_postman_id": "bfe395d0-c8a1-41c1-a863-6e31e764057f",
+		"name": "202404-controleDelivery",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32820316"
+	},
+	"item": [
+		{
+			"name": "Seguranca",
+			"item": [
+				{
+					"name": "Cria Novo Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"marcio.augusto.o.s@gmail.com\",\r\n  \"senha\": \"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/public/v1/usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"public",
+								"v1",
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticação",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"usuario\": \"marcio.augusto.o.s@gmail.com\",\r\n  \"senha\": \"123456\",\r\n  \"userPassToken\": {\r\n    \"authorities\": [\r\n      {\r\n        \"authority\": \"string\"\r\n      }\r\n    ],\r\n    \"details\": {},\r\n    \"authenticated\": true,\r\n    \"principal\": {},\r\n    \"credentials\": {},\r\n    \"name\": \"Marcio\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/public/v1/autenticacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"public",
+								"v1",
+								"autenticacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca Usuario ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/public/v1/usuario/93c4c1d0-5e1a-43ea-9ebd-d058f57de2e9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"public",
+								"v1",
+								"usuario",
+								"93c4c1d0-5e1a-43ea-9ebd-d058f57de2e9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Cria Novo Cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoiYXVndXN0b19zZW5hQGhvdG1haWwuY29tIiwiaWF0IjoxNzEzMDUwMDUwLCJleHAiOjE3MTMwNTA5NTB9.loVP4j2UpxsrU7dz71TJOeoGX4KcFrHHgOFpccApDew",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nomeCliente\": \"João Santos\",\r\n  \"email\": \"joaozinho@hotmail.com\",\r\n  \"idUsuario\": \"93c4c1d0-5e1a-43ea-9ebd-d058f57de2e9\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta Cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoibWFyY2lvLmF1Z3VzdG8uby5zQGdtYWlsLmNvbSIsImlhdCI6MTcxMzA2NDE1OCwiZXhwIjoxNzEzMDY1MDU4fQ.aRTD7dQgv6wOMYol13H9yK6cvbIn_YoaK_xVtbg1TJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/cliente/0ee9c5cb-9d1f-4339-841a-235b2ac1f235",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"cliente",
+								"0ee9c5cb-9d1f-4339-841a-235b2ac1f235"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Altera Cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoiYXVndXN0b19zZW5hQGhvdG1haWwuY29tIiwiaWF0IjoxNzEzMDUwMDUwLCJleHAiOjE3MTMwNTA5NTB9.loVP4j2UpxsrU7dz71TJOeoGX4KcFrHHgOFpccApDew",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nomeCliente\": \"Caetano Alvares\",\r\n  \"email\": \"caetaninho@hotmail.com\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/cliente/alteraCliente/819e90bd-b95e-4bca-85b3-57a9181ad5cf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"cliente",
+								"alteraCliente",
+								"819e90bd-b95e-4bca-85b3-57a9181ad5cf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleta Cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoiYXVndXN0b19zZW5hQGhvdG1haWwuY29tIiwiaWF0IjoxNzEzMDUwMDUwLCJleHAiOjE3MTMwNTA5NTB9.loVP4j2UpxsrU7dz71TJOeoGX4KcFrHHgOFpccApDew",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/cliente/deletaCliente/819e90bd-b95e-4bca-85b3-57a9181ad5cf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"cliente",
+								"deletaCliente",
+								"819e90bd-b95e-4bca-85b3-57a9181ad5cf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Cria Pedido",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoibWFyY2lvLmF1Z3VzdG8uby5zQGdtYWlsLmNvbSIsImlhdCI6MTcxMzA2NDE1OCwiZXhwIjoxNzEzMDY1MDU4fQ.aRTD7dQgv6wOMYol13H9yK6cvbIn_YoaK_xVtbg1TJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nomeProduto\": \"Havaiana de Pau\",\r\n  \"idCliente\": \"0ee9c5cb-9d1f-4339-841a-235b2ac1f235\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/pedido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta Pedido",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoibWFyY2lvLmF1Z3VzdG8uby5zQGdtYWlsLmNvbSIsImlhdCI6MTcxMzA2NDE1OCwiZXhwIjoxNzEzMDY1MDU4fQ.aRTD7dQgv6wOMYol13H9yK6cvbIn_YoaK_xVtbg1TJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/pedido/d450793e-789e-4593-a31a-0a885b57333f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"pedido",
+								"d450793e-789e-4593-a31a-0a885b57333f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista Pedidos Cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoibWFyY2lvLmF1Z3VzdG8uby5zQGdtYWlsLmNvbSIsImlhdCI6MTcxMzA2NDE1OCwiZXhwIjoxNzEzMDY1MDU4fQ.aRTD7dQgv6wOMYol13H9yK6cvbIn_YoaK_xVtbg1TJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/pedido/listaPedidos/53f93841-d4dc-4f9f-ba62-0b60b77cf86a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"pedido",
+								"listaPedidos",
+								"53f93841-d4dc-4f9f-ba62-0b60b77cf86a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Altera Pedido",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoibWFyY2lvLmF1Z3VzdG8uby5zQGdtYWlsLmNvbSIsImlhdCI6MTcxMzA2NDE1OCwiZXhwIjoxNzEzMDY1MDU4fQ.aRTD7dQgv6wOMYol13H9yK6cvbIn_YoaK_xVtbg1TJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nomeProduto\": \"Havaiana de pau\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/pedido/alteraPedido/7625b386-d187-432d-836e-f02e87ae2881",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"pedido",
+								"alteraPedido",
+								"7625b386-d187-432d-836e-f02e87ae2881"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleta Pedido",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoibWFyY2lvLmF1Z3VzdG8uby5zQGdtYWlsLmNvbSIsImlhdCI6MTcxMzA2NDE1OCwiZXhwIjoxNzEzMDY1MDU4fQ.aRTD7dQgv6wOMYol13H9yK6cvbIn_YoaK_xVtbg1TJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/pedido/deletaPedido/5b2421dc-5324-4a6c-aa7c-efa93334bb89",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"pedido",
+								"deletaPedido",
+								"5b2421dc-5324-4a6c-aa7c-efa93334bb89"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Entrega",
+			"item": [
+				{
+					"name": "Criar Entrega",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoibWFyY2lvLmF1Z3VzdG8uby5zQGdtYWlsLmNvbSIsImlhdCI6MTcxMzA2NDE1OCwiZXhwIjoxNzEzMDY1MDU4fQ.aRTD7dQgv6wOMYol13H9yK6cvbIn_YoaK_xVtbg1TJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"endereco\": \"Rua Antares 365, Alameda dos Anjos - Brumadinho/MG\",\r\n  \"idPedido\": \"a0921911-bb83-4c27-8f81-d7ecc6c8c3f8\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/entrega",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"entrega"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta Entrega",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoibWFyY2lvLmF1Z3VzdG8uby5zQGdtYWlsLmNvbSIsImlhdCI6MTcxMzA2NDE1OCwiZXhwIjoxNzEzMDY1MDU4fQ.aRTD7dQgv6wOMYol13H9yK6cvbIn_YoaK_xVtbg1TJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/entrega/6134e6a8-110f-4f72-ba37-5e248e8e32af",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"entrega",
+								"6134e6a8-110f-4f72-ba37-5e248e8e32af"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Altera Dados Entrega",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoibWFyY2lvLmF1Z3VzdG8uby5zQGdtYWlsLmNvbSIsImlhdCI6MTcxMzA2NDE1OCwiZXhwIjoxNzEzMDY1MDU4fQ.aRTD7dQgv6wOMYol13H9yK6cvbIn_YoaK_xVtbg1TJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"endereco\": \"Rua Antares 365, Alameda dos Anjos - Belo Horizonte/MG\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/entrega/alteraDadosEntrega/c7f7e611-a0ba-4c38-904b-b4966a0073c7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"entrega",
+								"alteraDadosEntrega",
+								"c7f7e611-a0ba-4c38-904b-b4966a0073c7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleta Entrega",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoibWFyY2lvLmF1Z3VzdG8uby5zQGdtYWlsLmNvbSIsImlhdCI6MTcxMzA2NDE1OCwiZXhwIjoxNzEzMDY1MDU4fQ.aRTD7dQgv6wOMYol13H9yK6cvbIn_YoaK_xVtbg1TJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/entrega/deletaEntrega/c7f7e611-a0ba-4c38-904b-b4966a0073c7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"entrega",
+								"deletaEntrega",
+								"c7f7e611-a0ba-4c38-904b-b4966a0073c7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mudar Status",
+			"item": [
+				{
+					"name": "Status - Pedido Enviado",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoibWFyY2lvLmF1Z3VzdG8uby5zQGdtYWlsLmNvbSIsImlhdCI6MTcxMzA2NDE1OCwiZXhwIjoxNzEzMDY1MDU4fQ.aRTD7dQgv6wOMYol13H9yK6cvbIn_YoaK_xVtbg1TJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/pedido/enviado/a0921911-bb83-4c27-8f81-d7ecc6c8c3f8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"pedido",
+								"enviado",
+								"a0921911-bb83-4c27-8f81-d7ecc6c8c3f8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status - Pedido Entregue",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoibWFyY2lvLmF1Z3VzdG8uby5zQGdtYWlsLmNvbSIsImlhdCI6MTcxMzA2NDE1OCwiZXhwIjoxNzEzMDY1MDU4fQ.aRTD7dQgv6wOMYol13H9yK6cvbIn_YoaK_xVtbg1TJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/pedido/entregue/a0921911-bb83-4c27-8f81-d7ecc6c8c3f8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"pedido",
+								"entregue",
+								"a0921911-bb83-4c27-8f81-d7ecc6c8c3f8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status - Pedido Cancelado",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZG8gUHJvZHVkb3JvIiwic3ViIjoibWFyY2lvLmF1Z3VzdG8uby5zQGdtYWlsLmNvbSIsImlhdCI6MTcxMzA2NDE1OCwiZXhwIjoxNzEzMDY1MDU4fQ.aRTD7dQgv6wOMYol13H9yK6cvbIn_YoaK_xVtbg1TJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/controledelivery/api/v1/pedido/cancelado/d450793e-789e-4593-a31a-0a885b57333f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"controledelivery",
+								"api",
+								"v1",
+								"pedido",
+								"cancelado",
+								"d450793e-789e-4593-a31a-0a885b57333f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
