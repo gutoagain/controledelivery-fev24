@@ -37,4 +37,9 @@ public interface PedidoAPI {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deletaPedido(@RequestHeader(name = "Authorization", required = true) String token,
                       @PathVariable UUID idPedido);
+
+    @PatchMapping(value = "/enviado/{idPedido}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void mudaStatusParaEnviado(@RequestHeader (name = "Authorization", required = true) String token,
+                              @PathVariable UUID idPedido);
 }
