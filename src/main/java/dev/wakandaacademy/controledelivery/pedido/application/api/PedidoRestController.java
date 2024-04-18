@@ -63,4 +63,12 @@ public class PedidoRestController implements PedidoAPI {
         pedidoService.deletaPedido(usuario, idPedido);
         log.info("[finaliza] PedidoRestController - deletaPedido");
     }
+
+    @Override
+    public void mudaStatusParaEnviado(String token, UUID idPedido) {
+        log.info("[inicia] PedidoRestController - mudaStatusParaEnviado");
+        String usuario = clienteRestController.getUsuarioByToken(token);
+        pedidoService.mudaStatusParaEnviado(usuario, idPedido);
+        log.info("[finaliza] PedidoRestController - mudaStatusParaEnviado");
+    }
 }

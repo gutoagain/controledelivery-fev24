@@ -12,4 +12,5 @@ public interface EntregaRepository {
     Optional<Entrega> buscaEntregaPorId(UUID idEntrega);
     void deletaEntregaPorId(Entrega entregaDeletada);
     void deletaEntregaPorIdPedido(UUID idPedido);
+    Optional<Entrega> buscaEntregaPorIdPedido(UUID idPedido);
 }

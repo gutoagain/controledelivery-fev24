@@ -38,4 +38,10 @@ public class Entrega {
     public void altera(EditaEntregaRequest entregaRequest) {
         this.endereco = entregaRequest.getEndereco();
     }
+
+    public void mudaStatusParaEmAndamento() {
+        log.info("[inicia] Entrega - mudaStatusParaEmAndamento");
+        this.status = StatusEntrega.EM_ANDAMENTO;
+        log.info("[inicia] Entrega - mudaStatusParaEmAndamento");
+    }
 }

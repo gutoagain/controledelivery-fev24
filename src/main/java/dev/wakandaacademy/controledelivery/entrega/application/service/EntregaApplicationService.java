@@ -62,4 +62,14 @@ public class EntregaApplicationService implements EntregaService {
         entregaRepository.deletaEntregaPorId(entregaDeletada);
         log.info("[finaliza] EntregaApplicationService - deletaEntrega");
     }
+
+    @Override
+    public void mudaStatusEntregaParaEmAndamentoPorIdPedido(UUID idPedido) {
+        log.info("[inicia] EntregaApplicationService - mudaStatusParaEmAndamentoPorIdPedido");
+        Entrega entrega = entregaRepository.buscaEntregaPorIdPedido(idPedido)
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Entrega não encontrada!"));
+        entrega.mudaStatusParaEmAndamento();
+        entregaRepository.salva(entrega);
+        log.info("[inicia] EntregaApplicationService - mudaStatusParaEmAndamentoPorIdPedido");
+    }
 }
