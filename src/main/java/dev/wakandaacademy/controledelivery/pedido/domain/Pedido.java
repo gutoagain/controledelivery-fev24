@@ -47,4 +47,10 @@ public class Pedido {
         this.status = StatusPedido.ENVIADO;
         log.info("[finaliza] Pedido - mudaStatusParaEnviado");
     }
+
+    public void mudaStatusParaEntregue() {
+        log.info("[inicia] Pedido - mudaStatusParaEntregue");
+        this.status = StatusPedido.ENTREGUE;
+        log.info("[finaliza] Pedido - mudaStatusParaEntregue");
+    }
 }

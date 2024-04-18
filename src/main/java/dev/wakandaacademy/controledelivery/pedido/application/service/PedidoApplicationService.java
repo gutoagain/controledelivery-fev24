@@ -88,6 +88,10 @@ public class PedidoApplicationService implements PedidoService {
     @Override
     public void mudaStatusParaEntregue(String usuario, UUID idPedido) {
         log.info("[inicia] PedidoApplicationService - mudaStatusParaEntregue");
+        Pedido pedido = consultaPedido(usuario, idPedido);
+        pedido.mudaStatusParaEntregue();
+        entregaService.mudaStatusEntregaParaConcluidaPorIdPedido(idPedido);
+        pedidoRepository.salva(pedido);
         log.info("[finaliza] PedidoApplicationService - mudaStatusParaEntregue");
     }
 }

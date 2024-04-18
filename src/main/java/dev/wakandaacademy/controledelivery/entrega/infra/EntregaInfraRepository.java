@@ -79,10 +79,10 @@ public class EntregaInfraRepository implements EntregaRepository {
     }
 
     @Override
-    public Optional<Entrega> buscaEntregaPorIdPedido(UUID idPedido) {
-        log.info("[inicia] EntregaInfraRepository - deletaEntregaPorIdPedido");
-        Optional<Entrega> entregaPorId = entregaMongoDBRepository.findByIdPedido(idPedido);
-        log.info("[inicia] EntregaInfraRepository - deletaEntregaPorIdPedido");
+    public Entrega buscaEntregaPorIdPedido(UUID idPedido) {
+        log.info("[inicia] EntregaInfraRepository - buscaEntregaPorIdPedido");
+        Entrega entregaPorId = entregaMongoDBRepository.findByIdPedido(idPedido);
+        log.info("[inicia] EntregaInfraRepository - buscaEntregaPorIdPedido");
         return entregaPorId;
     }
 }
