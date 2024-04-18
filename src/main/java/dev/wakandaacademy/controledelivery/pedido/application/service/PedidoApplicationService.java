@@ -77,4 +77,10 @@ public class PedidoApplicationService implements PedidoService {
         pedidoRepository.deletaPedidoPorId(pedidoDeletado);
         log.info("[finaliza] PedidoApplicationService - deletaPedido");
     }
+
+    @Override
+    public void mudaStatusParaEnviado(String usuario, UUID idPedido) {
+        log.info("[inicia] PedidoApplicationService - mudaStatusParaEnviado");
+        log.info("[finaliza] PedidoApplicationService - mudaStatusParaEnviado");
+    }
 }
