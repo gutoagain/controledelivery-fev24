@@ -1,8 +1,6 @@
-# desafio2-controledelivery-fev24
+# Desafio 2 - Controle de Delivery
 
-#### Desafio 2 - Controle de Delivery
-
-Seja bem vindo!
+#### Seja bem vindo!
 
 Este é um sistema simples idealizado para o controle de delivery de um restaurante.
 
