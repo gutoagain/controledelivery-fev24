@@ -1,4 +1,4 @@
-# Desafio 2 - Controle de Delivery
+# Controle de Delivery
 
 #### Seja bem vindo!
 
