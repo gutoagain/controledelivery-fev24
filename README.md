@@ -6,8 +6,6 @@ Este é um sistema simples idealizado para o controle de delivery de um restaura
 
 ### Sumário:
 
-Desafio 2 - Controle de Delivery
-
 Sobre - Instalação
 
 Segurança
